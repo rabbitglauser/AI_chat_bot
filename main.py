@@ -5,9 +5,26 @@ import time
 import os
 import datetime
 import numpy as np
-import torch
 
 class ChatBot:
+    """
+    :class: ChatBot
+
+    The ChatBot class represents a simple chat bot that can convert speech to text, text to speech, and perform other actions based on specific triggers.
+
+    The ChatBot class has the following methods:
+
+    - `__init__(self, name)`: Initialize the ChatBot object. The `name` parameter sets the name of the chat bot.
+    - `speech_to_text(self)`: Convert speech to text using the device's microphone. This method utilizes the SpeechRecognition library and the Google Speech Recognition service. The recognized text is stored in the `self.text` attribute.
+    - `text_to_speech(text)`: Convert text to speech using the gTTS library. The `text` parameter specifies the text to be converted. The resulting speech is saved as an audio file and played. The audio file is automatically deleted afterwards.
+    - `wake_up(self, text)`: Check if the chat bot's name is mentioned in the given `text`. Returns `True` if the name is found, `False` otherwise.
+    - `action_time()`: Get the current time in the format "HH:MM".
+
+    Note:
+    - This class requires the following external libraries: SpeechRecognition, gTTS.
+    - The `speech_to_text` method includes exception handling for unknown audio and request errors from the Google Speech Recognition service.
+    - The `text_to_speech` method calculates the duration of the speech based on the size of the resulting audio file.
+    """
     def __init__(self, name):
         print("----- Starting up", name, "-----")
         self.name = name
