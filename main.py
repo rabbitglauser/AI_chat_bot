@@ -6,6 +6,7 @@ import os
 import datetime
 import numpy as np
 
+
 class ChatBot:
     """
     :class: ChatBot
@@ -91,3 +92,4 @@ if __name__ == "__main__":
                 res = chat[0]['generated_text'][len(ai.text):].strip()
         ai.text_to_speech(res)
     print("----- Closing down Dev -----")
+
